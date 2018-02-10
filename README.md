@@ -10,7 +10,7 @@ as well as an interactive representation of these new concepts, ideas, and techn
 
 ## Technology
 
-React/Redux frontend, with node.js backend api, connected with GraphQL
+React/Redux frontend, responsive CSS Grid, with node.js backend api, connected with GraphQL
 
 ## Features
 
