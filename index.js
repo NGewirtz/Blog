@@ -10,6 +10,8 @@ const url = require('url');
 
 //Server response
 const server = http.createServer((req, res) => {
+
+  //Get, parse, and trim URL
   const parsedUrl = url.parse(req.url, true);
   const path = parsedUrl.pathname;
   const trimmedPath = path.replace(/^\/+|\/+$/g, '');
