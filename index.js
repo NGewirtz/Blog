@@ -7,6 +7,7 @@
 //Dependencies
 const http = require('http');
 const url = require('url');
+const StringDecoder = require('string_decoder').StringDecoder;
 
 //Server response
 const server = http.createServer((req, res) => {
@@ -22,10 +23,22 @@ const server = http.createServer((req, res) => {
   //Get HTTP method
   const method = req.method.toLowerCase();
 
-  //response
-  res.end("Hello World");
+  //Get headers object
+  const headers = req.headers;
 
-  console.log("request recieved on " + trimmedPath + "with this method:" + queryStringObj);
+  //Get payload
+  const decoder = new StringDecoder('utf-8');
+  let buffer = '';
+  req.on('data', data => {
+    buffer += decoder.write(data);
+  });
+  req.on('end', () => {
+    buffer += decoder.end();
+
+    //response
+    res.end("Hello World");
+    console.log("request recieved on " + trimmedPath + "with this method:" + queryStringObj);
+  });
 });
 
 //Start server on port 3000
