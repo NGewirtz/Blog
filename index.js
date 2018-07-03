@@ -37,7 +37,6 @@ const server = http.createServer((req, res) => {
 
     //response
     res.end("Hello World");
-    console.log("request recieved on " + trimmedPath + "with this method:" + queryStringObj);
   });
 });
 
